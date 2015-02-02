@@ -1,3 +1,10 @@
+2015-02-02  Masayuki Ataka  <masayuki.ataka@gmail.com>
+
+	* w3-wget.el: Update email address.
+	* w3m-wget.el: Ditto
+	* wget-sysdep.el: Ditto
+	* wget.el: Ditto
+
 2004-10-19  Masayuki Ataka  <ataka@milk.freemail.ne.jp>
 
 	* Makefile (VERSION): New version 0.5.0.

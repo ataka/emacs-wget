@@ -2,8 +2,7 @@
 #                  Emacs-wget Makefile                     #
 ############################################################
 
-## Copyright (C) 2002, 2003, 2004  Masayuki Ataka  <ataka@milk.freemail.ne.jp>
-#  $Id: Makefile,v 1.13 2004/10/19 07:33:08 ataka Exp $
+## Copyright (C) 2002-2004, 2015  Masayuki Ataka  <masayuki.ataka@gmail.com>
 #
 
 PACKAGE = emacs-wget
@@ -13,7 +12,7 @@ prefix = /usr/local
 datadir = ${prefix}/share
 lispdir = ${datadir}/emacs/site-lisp/emacs-wget
 
-DOC = COPYING ChangeLog Makefile README README.ja USAGE USAGE.ja
+DOC = COPYING ChangeLog Makefile README.md README.ja.md USAGE.md USAGE.ja.md
 EL  = wget.el wget-sysdep.el w3-wget.el w3m-wget.el
 ELC = wget.elc wget-sysdep.elc w3-wget.elc w3m-wget.elc
 LPATH = lpath.el

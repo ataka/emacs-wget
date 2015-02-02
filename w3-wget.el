@@ -1,9 +1,8 @@
 ;;; w3-wget.el --- Interface program of wget on emacs-w3.
 
-;; Copyright (C) 2002, 2004 Masayuki Ataka <ataka@milk.freemail.ne.jp>
-;;	$Id: w3-wget.el,v 1.9 2004/10/08 11:04:02 ataka Exp $	
+;; Copyright (C) 2002, 2004 Masayuki Ataka <masayuki.ataka@gmail.com>
 
-;; Authors: Masayuki Ataka <ataka@milk.freemail.ne.jp>
+;; Authors: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: w3, WWW, hypermedia
 
 ;; This file is a part of emacs-wget.

@@ -1,9 +1,8 @@
 ;;; wget-sysdep.el --- System dependencies between FSF Emacs 20 and 21.
 
-;; Copyright (C) 2002, 2003, 2004 Masayuki Ataka <ataka@milk.freemail.ne.jp>
-;;	$Id: wget-sysdep.el,v 1.4 2004/01/25 05:26:37 m1378502 Exp $	
+;; Copyright (C) 2002, 2003, 2004 Masayuki Ataka <masayuki.ataka@gmail.com>
 
-;; Author: Masayuki Ataka <ataka@milk.freemail.ne.jp>
+;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: hypermedia, WWW
 
 ;; This file is a part of emacs-wget.

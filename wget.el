@@ -1,9 +1,8 @@
 ;;; wget.el --- Interface program of wget on Emacs
 
-;; Copyright (C) 2001, 2002, 2003, 2004 Masayuki Ataka <ataka@milk.freemail.ne.jp>
-;;	$Id: wget.el,v 1.94 2004/10/16 06:43:43 ataka Exp $
+;; Copyright (C) 2001-2004, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
 
-;; Author: Masayuki Ataka <ataka@milk.freemail.ne.jp>
+;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: hypermedia, WWW
 
 

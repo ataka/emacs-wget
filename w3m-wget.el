@@ -1,9 +1,8 @@
 ;;; w3m-wget.el --- Interface program of wget on emacs-w3m.
 
-;; Copyright (C) 2001, 2002 Masayuki Ataka <ataka@milk.freemail.ne.jp>
-;;	$Id: w3m-wget.el,v 1.14 2004/03/12 22:31:46 m1378502 Exp $	
+;; Copyright (C) 2001, 2002 Masayuki Ataka <masayuki.ataka@gmail.com>
 
-;; Authors: Masayuki Ataka <ataka@milk.freemail.ne.jp>
+;; Authors: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: w3m, WWW, hypermedia
 
 ;; This file is a part of emacs-wget.

@@ -108,12 +108,12 @@ This package contains an interface program for GNU wget on Emacs.
     21.3.50 (CVS)                 1.8.1, 1.8.2, 1.9.1
 
    If you find emacs-wget work with other environment above, please tell
-   me <ataka@milk.freemail.ne.jp>.
+   me <masayuki.ataka@gmail.com>.
 
 
 5. Contact address
 
-   E-mail to <ataka@milk.freemail.ne.jp>.
+   E-mail to <masayuki.ataka@gmail.com>.
    Any information, bug-report, request, comments, etc... are welcome.
 
    If you send me a bug-report, please write your wget version, too.
