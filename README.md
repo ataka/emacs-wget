@@ -31,65 +31,69 @@ GNU Emacs and GNU wget.
 
 # Installation
 
-1. make && make install
-```
-$ tar xzvf emacs-wget-X.YY.tar.gz
-$ cd emacs-wget-X.YY
-$ make
-# make install
-```
+1.  make && make install
+
+        $ tar xzvf emacs-wget-X.YY.tar.gz
+        $ cd emacs-wget-X.YY
+        $ make
+        # make install
+
   1. If make fails, put all *.el files into your load-path directory.
 2. Put following expressions into your .emacs file.
-```elisp
-(autoload 'wget "wget" "wget interface for Emacs." t)
-(autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
-```
+
+        (autoload 'wget "wget" "wget interface for Emacs." t)
+        (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+
 3. Setting for Web browser on Emacs:
   1. With emacs-w3m, put the following code into your .emacs:
-```elisp
-(load "w3m-wget")
-```
+
+                (load "w3m-wget")
+
   2. With Emacs/W3, put the following code into your .emacs:
-```elisp
-(autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
-```
+
+                (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+
 4. If wget version is 1.7 or less, put the following code into your .emacs:
-```elisp
-(setq wget-basic-options '("-v"))
-```
+
+        (setq wget-basic-options '("-v"))
+
 5. When you write your `.wgetrc`:
   1. `quiet = on`
+
      Emacs-wget will fail to download.  Put the following into your .emacs:
-```elisp
-(setq wget-basic-options (cons "-equiet=off" wget-basic-options))
-```
+
+        (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+
   2. `dir_prefix = PATH/TO/DOWNLOAD`
+
      Variable wget-download-directory will be ignored.  Put the
      following into your .emacs:
-```elisp
-(setq wget-basic-options (cons "-P." wget-basic-options))
-```
+
+        (setq wget-basic-options (cons "-P." wget-basic-options))
+
   3. `timestamping = on`
      `mirror = on`  (`mirror=on` automatically sets `timestamping=on`)
+
      These options conflict with -nc option.  If your wget-default-options
      or wget-ftp-default-options have -nc option, get rid of it.
 
   4. `logfile = log`
+
      *wget* buffer will appear but show no information, because the
      output from wget is robbed by the 'log' file.  I don't have
      good idea, except not displaying surd *wget* buffer:
-```elisp
-(setq wget-process-buffer nil)
-```
+
+        (setq wget-process-buffer nil)
+
   5. If the system can not search wget command, tell emacs where to find
      it.
-```elisp
-(setq wget-command "C:/cygwin/bin/wget")
-```
+
+        (setq wget-command "C:/cygwin/bin/wget")
+
 
 # Running with...
 
-|`(emacs-version)`|`wget -V`|
+|(emacs-version)|wget -V|
 |:--|:--|
 |20.7 (Meadow 1.15)|1.8.2 (cygwin)|
 |21.3.50 (CVS)|1.8.1, 1.8.2, 1.9.1|
