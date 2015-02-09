@@ -62,14 +62,14 @@ GNU Emacs and GNU wget.
 
      Emacs-wget will fail to download.  Put the following into your .emacs:
 
-        (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+                (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
 
   2. `dir_prefix = PATH/TO/DOWNLOAD`
 
      Variable wget-download-directory will be ignored.  Put the
      following into your .emacs:
 
-        (setq wget-basic-options (cons "-P." wget-basic-options))
+                (setq wget-basic-options (cons "-P." wget-basic-options))
 
   3. `timestamping = on`
      `mirror = on`  (`mirror=on` automatically sets `timestamping=on`)
@@ -83,12 +83,12 @@ GNU Emacs and GNU wget.
      output from wget is robbed by the 'log' file.  I don't have
      good idea, except not displaying surd *wget* buffer:
 
-        (setq wget-process-buffer nil)
+                (setq wget-process-buffer nil)
 
   5. If the system can not search wget command, tell emacs where to find
      it.
 
-        (setq wget-command "C:/cygwin/bin/wget")
+                (setq wget-command "C:/cygwin/bin/wget")
 
 
 # Running with...
@@ -160,7 +160,6 @@ Akira TAGOH <tagoh@debian.org> maintains debian package for emacs-wget.
 * mace <mace@kirjakaapeli.lib.hel.fi>
   - Suggestion for asking download directory always when user option
     wget-download-directory is nil.
-
 
 
 Local Variables:
