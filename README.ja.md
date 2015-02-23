@@ -19,7 +19,7 @@
 
    最新の emacs-wget は、以下のサイトで公開しています。
 
-   http://pop-club.hp.infoseek.co.jp/emacs/emacs-wget/
+   https://github.com/ataka/emacs-wget
 
 
 2. 必要なもの

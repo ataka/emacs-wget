@@ -3,6 +3,7 @@
 ;; Copyright (C) 2001-2004, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
 
 ;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
+;; URL: https://github.com/ataka/emacs-wget
 ;; Keywords: hypermedia, WWW
 
 
@@ -29,7 +30,7 @@
 ;; emacs-wget is an interface program of GNU wget on Emacs.  For more
 ;; details about emacs-wget, see:
 ;;
-;;    http://pop-club.hp.infoseek.co.jp/emacs/emacs-wget/
+;;    https://github.com/ataka/emacs-wget
 
 
 ;;; How to install:
@@ -628,7 +629,7 @@ process."
 ;;; Debug Code
 ;;
 ;; (apply 'start-process "WGET" "*Wget*" "wget" ;wget-command
-;;        '("http://pop-club.hp.infoseek.co.jp/emacs/fcopy.el"))
+;;        '("https://github.com/ataka/emacs-wget"))
 ;;
 
 
