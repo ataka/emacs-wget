@@ -51,9 +51,9 @@ GNU Emacs and GNU wget.
 3. Setting for Web browser on Emacs:
   1. With emacs-w3m, put the following code into your .emacs:
 
-        ```elisp
-        (load "w3m-wget")
-		```
+    ```elisp
+    (load "w3m-wget")
+	```
 
   2. With Emacs/W3, put the following code into your .emacs:
 
