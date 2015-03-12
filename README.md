@@ -33,10 +33,12 @@ GNU Emacs and GNU wget.
 
 1.  make && make install
 
-        $ tar xzvf emacs-wget-X.YY.tar.gz
-        $ cd emacs-wget-X.YY
-        $ make
-        # make install
+    ```
+    $ tar xzvf emacs-wget-X.YY.tar.gz
+    $ cd emacs-wget-X.YY
+    $ make
+    # make install
+	```
 
   1. If make fails, put all *.el files into your load-path directory.
 2. Put following expressions into your .emacs file.
