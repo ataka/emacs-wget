@@ -57,18 +57,24 @@ GNU Emacs and GNU wget.
 
   2. With Emacs/W3, put the following code into your .emacs:
 
-                (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+    ```elisp
+    (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+	```
 
 4. If wget version is 1.7 or less, put the following code into your .emacs:
 
-        (setq wget-basic-options '("-v"))
+    ```elisp
+    (setq wget-basic-options '("-v"))
+	```
 
 5. When you write your `.wgetrc`:
   1. `quiet = on`
 
      Emacs-wget will fail to download.  Put the following into your .emacs:
 
-                (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+     ```elisp
+     (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+	 ```
 
   2. `dir_prefix = PATH/TO/DOWNLOAD`
 
