@@ -43,13 +43,17 @@ GNU Emacs and GNU wget.
   1. If make fails, put all *.el files into your load-path directory.
 2. Put following expressions into your .emacs file.
 
-        (autoload 'wget "wget" "wget interface for Emacs." t)
-        (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+    ```elisp
+    (autoload 'wget "wget" "wget interface for Emacs." t)
+    (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+	```
 
 3. Setting for Web browser on Emacs:
   1. With emacs-w3m, put the following code into your .emacs:
 
-                (load "w3m-wget")
+        ```elisp
+        (load "w3m-wget")
+		```
 
   2. With Emacs/W3, put the following code into your .emacs:
 
