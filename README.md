@@ -81,7 +81,9 @@ GNU Emacs and GNU wget.
      Variable wget-download-directory will be ignored.  Put the
      following into your .emacs:
 
-                (setq wget-basic-options (cons "-P." wget-basic-options))
+     ```elisp
+     (setq wget-basic-options (cons "-P." wget-basic-options))
+	 ```
 
   3. `timestamping = on`
      `mirror = on`  (`mirror=on` automatically sets `timestamping=on`)
@@ -95,12 +97,16 @@ GNU Emacs and GNU wget.
      output from wget is robbed by the 'log' file.  I don't have
      good idea, except not displaying surd *wget* buffer:
 
-                (setq wget-process-buffer nil)
+     ```elisp
+     (setq wget-process-buffer nil)
+	 ```
 
   5. If the system can not search wget command, tell emacs where to find
      it.
 
-                (setq wget-command "C:/cygwin/bin/wget")
+     ```elisp
+     (setq wget-command "C:/cygwin/bin/wget")
+	 ```
 
 
 # Running with...
