@@ -33,43 +33,57 @@ GNU Emacs and GNU wget.
 
 1.  make && make install
 
-        $ tar xzvf emacs-wget-X.YY.tar.gz
-        $ cd emacs-wget-X.YY
-        $ make
-        # make install
+    ```
+    $ tar xzvf emacs-wget-X.YY.tar.gz
+    $ cd emacs-wget-X.YY
+    $ make
+    # make install
+	```
 
   1. If make fails, put all *.el files into your load-path directory.
 2. Put following expressions into your .emacs file.
 
-        (autoload 'wget "wget" "wget interface for Emacs." t)
-        (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+    ```elisp
+    (autoload 'wget "wget" "wget interface for Emacs." t)
+    (autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+	```
 
 3. Setting for Web browser on Emacs:
   1. With emacs-w3m, put the following code into your .emacs:
 
-                (load "w3m-wget")
+    ```elisp
+    (load "w3m-wget")
+	```
 
   2. With Emacs/W3, put the following code into your .emacs:
 
-                (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+    ```elisp
+    (autoload 'w3-wget "w3-wget" "wget interface for Emacs/W3." t)
+	```
 
 4. If wget version is 1.7 or less, put the following code into your .emacs:
 
-        (setq wget-basic-options '("-v"))
+    ```elisp
+    (setq wget-basic-options '("-v"))
+	```
 
 5. When you write your `.wgetrc`:
   1. `quiet = on`
 
      Emacs-wget will fail to download.  Put the following into your .emacs:
 
-                (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+     ```elisp
+     (setq wget-basic-options (cons "-equiet=off" wget-basic-options))
+	 ```
 
   2. `dir_prefix = PATH/TO/DOWNLOAD`
 
      Variable wget-download-directory will be ignored.  Put the
      following into your .emacs:
 
-                (setq wget-basic-options (cons "-P." wget-basic-options))
+     ```elisp
+     (setq wget-basic-options (cons "-P." wget-basic-options))
+	 ```
 
   3. `timestamping = on`
      `mirror = on`  (`mirror=on` automatically sets `timestamping=on`)
@@ -83,12 +97,16 @@ GNU Emacs and GNU wget.
      output from wget is robbed by the 'log' file.  I don't have
      good idea, except not displaying surd *wget* buffer:
 
-                (setq wget-process-buffer nil)
+     ```elisp
+     (setq wget-process-buffer nil)
+	 ```
 
   5. If the system can not search wget command, tell emacs where to find
      it.
 
-                (setq wget-command "C:/cygwin/bin/wget")
+     ```elisp
+     (setq wget-command "C:/cygwin/bin/wget")
+	 ```
 
 
 # Running with...
