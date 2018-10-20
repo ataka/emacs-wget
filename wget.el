@@ -898,7 +898,7 @@ Keybindings:
 	(insert "  --- Wget Process ---")
 	(if proc-alist
 	    (progn
-	      (mapcar 'wget-progress-update proc-alist)
+	      (mapc 'wget-progress-update proc-alist)
 	      (when (and
 		     (not (one-window-p))
 		     (> height (+ 2 (length proc-alist))))
