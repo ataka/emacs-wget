@@ -439,8 +439,7 @@ When download dir is not directory or unwritable, get error"
       (error "Can't open download directory: %s" dir))
     ;; Change Directory
     (setq dir (expand-file-name dir))
-    (save-excursion
-      (set-buffer (get-buffer-create (or wget-process-buffer " *wget*")))
+    (with-current-buffer (get-buffer-create (or wget-process-buffer " *wget*"))
       (cd dir))))
 
 ;; filter functions
@@ -605,9 +604,8 @@ process."
 	 (lang (concat "LANG=" (getenv "LANG")))
 	 (process-environment (cons "LANG=C"
 				    (delete lang (copy-sequence process-environment))))
-	 (proc (save-excursion
-		 (set-buffer (or buf " *wget*"))
-		 (wget-write-download-log uri)
+	 (proc (with-current-buffer (or buf " *wget*")
+                 (wget-write-download-log uri)
 		 (apply 'start-process "wget" buf wget-command args)))
 	 (win  (selected-window)))
     ;; Initialize property.
@@ -637,8 +635,7 @@ process."
   "Process filter function for wget.
 Argument PROC is process of wget and argument STRING is an output string from wget."
   (when wget-debug
-    (save-excursion
-      (set-buffer (get-buffer-create wget-debug-buffer))
+    (with-current-buffer (get-buffer-create wget-debug-buffer)
       (insert string "")))
   (when (string-match "[0-9a-Z]" string) ; Ignore wget output that contains only `.'
     (let ((proc-cell (wget-get-wget-process proc))
@@ -892,8 +889,7 @@ Keybindings:
   "Revert wget buffer."
   (interactive)
   (when wget-process-buffer
-    (save-excursion
-      (set-buffer wget-process-buffer)
+    (with-current-buffer wget-process-buffer
       (let ((proc-alist (wget-get-process-alist))
 	    (buffer-read-only nil)
 	    (height (wget-window-height)))
@@ -915,58 +911,57 @@ Keybindings:
   "Update wget progress and return uri.
 Argument PROC-CELL is cons cell of (URI . PROCESS)."
   (when (process-buffer (cdr proc-cell))
-    (save-excursion
-      (let* ((status "[  0%]")
-	     (bar  (format "%11c" ? ))
-	     (uri  (wget-replace-regexp-in-string "~" "%7E" (car proc-cell)))
-	     (proc (cdr proc-cell))
-	     (buffer-read-only (prog1 nil
-				 (set-buffer (process-buffer proc)))))
-	(if progress
-	    (let ((file (cdr (assoc proc wget-process-saved-alist))))
-	      (goto-char (point-min))
-	      (when uri
-		(if (not (and file (wget-recursive-p proc)))
-		    (search-forward uri nil t)
-		  (if file
-		      (unless (search-forward file nil t)
-			(goto-char (point-max))
-			(search-forward uri nil t))))
-		(delete-region (progn (forward-line 0) (point))
-			       (progn (end-of-line 1) (point)))
-		(forward-line 0))
-	      (if (numberp progress)
-		  (setq status (format "[%3d%%]" progress)
-			bar    (format "%-11s"
-				       (make-string (/ progress 10) ?*)))
-		;; if PROGRESS is not a number but a string.
-		(setq bar "")
-		(cond
-		 ((string= progress "connecting")
-		  (setq status "*Connecting...   "))
-		 ((string= progress "connected")
-		  (setq status "=*=Connected=*=  "))
-		 ((string= progress "retrieved")
-		  (setq status "=*=Up-To-Date=*= "
-			uri (wget-process-file-name proc)))
-		 ((string= progress "downloaded")
-		  (setq status "=*=DOWNLOADED=*= "
-			uri (concat (file-name-as-directory
-				     (cdr (assoc proc wget-process-dir-alist)))
-				    file)))))
-	      (when (and file (wget-recursive-p proc))
-		(setq uri file)))
-	  ;; If no progress
-	  (if (cdr (assoc proc wget-process-percent-alist))
-	      (setq progress (cdr (assoc proc wget-process-percent-alist))
-		    status   (format "[%3d%%]" progress)
-		    bar      (format "%-11s"
-				     (make-string (/ progress 10) ?*))))
-	  (end-of-line 1)
-	  (insert "\n"))
-	(when uri
-	  (insert "  " status bar uri)
-	  (set-buffer-modified-p nil))))))
+    (let* ((status "[  0%]")
+	   (bar  (format "%11c" ? ))
+	   (uri  (wget-replace-regexp-in-string "~" "%7E" (car proc-cell)))
+	   (proc (cdr proc-cell)))
+      (with-current-buffer (process-buffer proc)
+        (let ((buffer-read-only nil))
+	  (if progress
+	      (let ((file (cdr (assoc proc wget-process-saved-alist))))
+	        (goto-char (point-min))
+	        (when uri
+		  (if (not (and file (wget-recursive-p proc)))
+		      (search-forward uri nil t)
+		    (if file
+		        (unless (search-forward file nil t)
+			  (goto-char (point-max))
+			  (search-forward uri nil t))))
+		  (delete-region (progn (forward-line 0) (point))
+			         (progn (end-of-line 1) (point)))
+		  (forward-line 0))
+	        (if (numberp progress)
+		    (setq status (format "[%3d%%]" progress)
+			  bar    (format "%-11s"
+				         (make-string (/ progress 10) ?*)))
+		  ;; if PROGRESS is not a number but a string.
+		  (setq bar "")
+		  (cond
+		   ((string= progress "connecting")
+		    (setq status "*Connecting...   "))
+		   ((string= progress "connected")
+		    (setq status "=*=Connected=*=  "))
+		   ((string= progress "retrieved")
+		    (setq status "=*=Up-To-Date=*= "
+			  uri (wget-process-file-name proc)))
+		   ((string= progress "downloaded")
+		    (setq status "=*=DOWNLOADED=*= "
+			  uri (concat (file-name-as-directory
+				       (cdr (assoc proc wget-process-dir-alist)))
+				      file)))))
+	        (when (and file (wget-recursive-p proc))
+		  (setq uri file)))
+	    ;; If no progress
+	    (if (cdr (assoc proc wget-process-percent-alist))
+	        (setq progress (cdr (assoc proc wget-process-percent-alist))
+		      status   (format "[%3d%%]" progress)
+		      bar      (format "%-11s"
+				       (make-string (/ progress 10) ?*))))
+	    (end-of-line 1)
+	    (insert "\n"))
+	  (when uri
+	    (insert "  " status bar uri)
+	    (set-buffer-modified-p nil)))))))
 
 (defun wget-info ()
   "Show information about the retrieving file."
@@ -1028,8 +1023,7 @@ Argument PROC-CELL is cons cell of (URI . PROCESS)."
 		     str t)))
 	(setq str (wget-replace-regexp-in-string
 		   "%U" uri str t))
-	(save-excursion
-	  (set-buffer (or (get-file-buffer log) (find-file-noselect log)))
+	(with-current-buffer (or (get-file-buffer log) (find-file-noselect log))
 	  (if wget-add-download-log-eof
 	      (goto-char (point-max))
 	    (goto-char (point-min)))
